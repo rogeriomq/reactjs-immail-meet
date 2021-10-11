@@ -1,5 +1,5 @@
-# Frontend POC imMail Meet Integration
-## Proof of concepet with [imMail Meet Integration](https://helpcenter.immail.ca/en/knowledge-base/immail-meet-embedding/).
+# Frontend Example - imMail Meet Integration
+## ReactJS project example for [imMail Meet Integration](https://helpcenter.immail.ca/en/knowledge-base/immail-meet-embedding/).
 
 ## Install
 with npm:
@@ -24,4 +24,4 @@ or
 yarn dev
 ```
 
-See [Backend POC](https://github.com/rogeriomq/fastify-immail-meet) for more details on the integration with the API provided by imMail.
+See [Backend Example](https://github.com/rogeriomq/fastify-immail-meet) for more details on the integration with the API provided by imMail.
