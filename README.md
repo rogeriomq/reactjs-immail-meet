@@ -12,6 +12,16 @@ with yarn:
 yarn
 ```
 ## Setup
+ - Copy and rename env-example to .env
+ - Set your api url in VITE_API_URL prop
 
+Rurning with:
+```
+npm run dev
+```
+or
+```
+yarn dev
+```
 
-See [Backend POC](https://immail.ca) for more details on the integration with the API provided by imMail.
+See [Backend POC](https://github.com/rogeriomq/fastify-immail-meet) for more details on the integration with the API provided by imMail.
