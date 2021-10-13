@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { useParams, useLocation, useHistory } from 'react-router-dom'
+import { useParams, useLocation, useHistory, Redirect } from 'react-router-dom'
 import Header from '../components/Header'
 import Button from '../components/Button'
 import Meet from '../components/Meet'
@@ -34,7 +34,6 @@ const PreAppointment: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const isModerator = profile === 'doctor'
-      console.log(import.meta.env)
       const getRoomTokenUrl = `${
         import.meta.env.VITE_API_URL
       }/api/meet/token/participant?roomName=${roomName}&moderator=${isModerator}`
@@ -82,11 +81,21 @@ const PreAppointment: React.FC = () => {
         `)
         setRenderMeet(true)
       } catch (error) {
-        console.log('sdfsdf', error)
+        console.log('ERROR:', error)
       }
     }
     fetchData()
   }, [])
+
+  if (!location.state) {
+    return (
+      <>
+        <Redirect
+          to={{ pathname: `/${profile}/pre-appointment/${roomName}` }}
+        />
+      </>
+    )
+  }
 
   return (
     <div className="flex flex-1">
