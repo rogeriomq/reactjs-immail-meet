@@ -27,7 +27,7 @@ const CreateAppointment: React.FC = () => {
   const createAppointmentAction = () => {
     const fetchData = async () => {
       setRequestStatus('LOADING')
-      const url = 'http://localhost:4000/api/meet/room/create'
+      const url = `${import.meta.env.VITE_API_URL}/api/meet/room/create`
       try {
         const response = await fetch(url)
         const room = await response.json()

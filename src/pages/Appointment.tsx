@@ -7,14 +7,8 @@ import { IOptions } from '../types'
 
 type ProfileType = 'doctor' | 'patient'
 
-const hosts = {
-  local: 'http://localhost:3000/meet',
-  stage: 'https://stageweb.immailapp.ca/meet',
-  prod: 'https://web.immail.ca/meet',
-}
-
 const PreAppointment: React.FC = () => {
-  const BASE_IFRAME_SRC = hosts.local
+  const BASE_IFRAME_SRC = 'https://web.immail.ca/meet'
   const containerRef = useRef<HTMLDivElement>(null)
   const location = useLocation<{
     state: IOptions
