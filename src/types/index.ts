@@ -9,4 +9,5 @@ export interface IOptions {
   startScreenSharing?: boolean
   hideParticipantsStats?: boolean
   prejoinPageEnabled?: boolean
+  hiddenLogo?: boolean
 }

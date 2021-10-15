@@ -13,6 +13,7 @@ const INITIAL_OPTIONS_VALUE: IOptions = {
   fileRecordingsEnabled: false,
   startRecording: false,
   liveStreamingEnabled: false,
+  hiddenLogo: true,
 }
 
 const PreAppointment: React.FC = () => {
