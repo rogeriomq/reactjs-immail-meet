@@ -30,6 +30,9 @@ const CreateAppointment: React.FC = () => {
       const url = `${import.meta.env.VITE_API_URL}/api/meet/room/create`
       try {
         const response = await fetch(url)
+
+        if (!response.ok) throw new Error(await response.json())
+
         const room = await response.json()
         setRoom(room)
         const { host, protocol } = window.location
@@ -37,6 +40,7 @@ const CreateAppointment: React.FC = () => {
         setMeetLink(link)
         setRequestStatus('COMPLETED')
       } catch (error) {
+        console.log('ERROR::::::::', error)
         setRequestStatus('ERROR')
         setMeetLink('')
       }

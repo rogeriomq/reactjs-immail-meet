@@ -13,7 +13,9 @@ const INITIAL_OPTIONS_VALUE: IOptions = {
   fileRecordingsEnabled: false,
   startRecording: false,
   liveStreamingEnabled: false,
-  hiddenLogo: true,
+  hideLogo: false,
+  hideButtons: ['invite'],
+  hideDesktopLink: true,
 }
 
 const PreAppointment: React.FC = () => {

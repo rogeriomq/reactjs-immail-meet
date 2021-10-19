@@ -8,7 +8,7 @@ import { IOptions } from '../types'
 type ProfileType = 'doctor' | 'patient'
 
 const PreAppointment: React.FC = () => {
-  const BASE_IFRAME_SRC = 'https://web.immail.ca/meet'
+  const BASE_IFRAME_SRC = 'http://localhost:3000/meet'
   const containerRef = useRef<HTMLDivElement>(null)
   const location = useLocation<{
     state: IOptions
@@ -42,6 +42,9 @@ const PreAppointment: React.FC = () => {
           startWithVideoMuted,
           fileRecordingsEnabled,
           liveStreamingEnabled,
+          hideLogo,
+          hideButtons,
+          hideDesktopLink,
         } = location.state as IOptions
 
         const query: any = {
@@ -53,14 +56,20 @@ const PreAppointment: React.FC = () => {
           startWithVideoMuted,
           fileRecordingsEnabled,
           liveStreamingEnabled,
+          hideLogo,
+          hideButtons,
+          hideDesktopLink,
         }
 
         const queryString = Object.keys(query).reduce((acc, key, i) => {
           if (i > 0) acc += '&'
+
           acc += `${key}=${query[key]}`
           return acc
         }, '')
         const src = `${BASE_IFRAME_SRC}/${roomName}?${queryString}`
+        console.log(`🚀IFRAME src`, src)
+
         setStrIframe(`
           <iframe
             id="iframe-meet"
