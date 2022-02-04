@@ -1,6 +1,7 @@
 export interface IOptions {
   firstName?: string
   lastName?: string
+  avatar?: string
   startWithAudioMuted?: boolean
   startWithVideoMuted?: boolean
   fileRecordingsEnabled?: boolean
