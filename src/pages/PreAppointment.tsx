@@ -6,12 +6,15 @@ import { IOptions } from '../types'
 type ProfileType = 'doctor' | 'patient'
 
 const INITIAL_OPTIONS_VALUE: IOptions = {
-  firstName: '',
-  lastName: '',
+  firstName: 'Rogerio',
+  lastName: 'Queiroz',
+  // avatar:
+  // 'https://images.unsplash.com/photo-1640797990908-533526f627af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=701&q=80',
+  // avatar: '', // pegou a foto da immail
   startWithAudioMuted: false,
-  startWithVideoMuted: false,
-  fileRecordingsEnabled: false,
-  startRecording: false,
+  startWithVideoMuted: true,
+  fileRecordingsEnabled: true,
+  startRecording: true,
   liveStreamingEnabled: false,
   hideLogo: false,
   hideButtons: ['invite'],
@@ -38,6 +41,8 @@ const PreAppointment: React.FC = () => {
 
   const goToAppointment = () => {
     const profileRoute = profile === 'doctor' ? 'doctor' : 'patient'
+
+    console.log('######  Options:', { options })
     history.push(`/${profileRoute}/appointment/${roomName}`, options)
   }
 

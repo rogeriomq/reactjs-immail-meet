@@ -21,8 +21,29 @@ const PreAppointment: React.FC = () => {
   const [strIframe, setStrIframe] = useState('')
 
   const endAppointment = () => {
-    if (containerRef.current?.innerHTML) containerRef.current.innerHTML = ''
-    if (profile === 'doctor') history.replace('/')
+    const iframeMeet = document.getElementById(
+      'iframe-meet'
+    ) as HTMLIFrameElement
+    if (iframeMeet) {
+      console.log('PostMessage immailStopRecording')
+
+      iframeMeet.contentWindow?.postMessage(
+        'stopRecording',
+        'http://localhost:3000'
+      )
+      iframeMeet.contentWindow?.postMessage(
+        { type: 'hangup' },
+        'http://localhost:3000'
+      )
+      setTimeout(() => {
+        iframeMeet.contentWindow?.postMessage(
+          { type: 'dispose' },
+          'http://localhost:3000'
+        )
+
+        if (profile === 'doctor') history.replace('/')
+      }, 1500)
+    }
   }
 
   useEffect(() => {
@@ -38,6 +59,7 @@ const PreAppointment: React.FC = () => {
           firstName: first_name,
           lastName: last_name,
           startRecording: start_recording,
+          avatar,
           startWithAudioMuted,
           startWithVideoMuted,
           fileRecordingsEnabled,
@@ -51,6 +73,7 @@ const PreAppointment: React.FC = () => {
           jwt: roomToken,
           first_name,
           last_name,
+          avatar,
           start_recording,
           startWithAudioMuted,
           startWithVideoMuted,
@@ -69,7 +92,6 @@ const PreAppointment: React.FC = () => {
         }, '')
         const src = `${BASE_IFRAME_SRC}/${roomName}?${queryString}`
         console.log(`🚀IFRAME src`, src)
-
         setStrIframe(`
           <iframe
             id="iframe-meet"
